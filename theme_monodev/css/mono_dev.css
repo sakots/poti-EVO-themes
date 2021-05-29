@@ -116,6 +116,19 @@ input[name="upfile"], textarea[name="upfile"], select[name="upfile"], .se[name="
   width: 25em;
 }
 
+input[type="number"], textarea[type="number"], select[type="number"], .se[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button, textarea[type="number"]::-webkit-outer-spin-button, select[type="number"]::-webkit-outer-spin-button, .se[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button, textarea[type="number"]::-webkit-inner-spin-button, select[type="number"]::-webkit-inner-spin-button, .se[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 input.copy_txt, textarea.copy_txt, select.copy_txt, .copy_txt.se {
   width: 1px;
   height: 1px;
@@ -374,6 +387,11 @@ ul.menu {
 
 .delfo tr:nth-child(odd) {
   background-color: #111111;
+}
+
+div#chickenpaint-parent {
+  letter-spacing: initial;
+  word-break: 　initial;
 }
 
 @media screen and (max-width: 1024px) {

@@ -13,12 +13,12 @@
 		<% def(pch_mode) %><meta name="viewport" content="width=device-width"><% /def %>
 		<% def(continue_mode) %><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0"><% /def %>
 		<% def(useneo) %>
-		<link rel="stylesheet" href="neo.css" type="text/css">
-		<script src="neo.js" charset="UTF-8"></script>
+		<link rel="stylesheet" href="neo.css<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>" type="text/css">
+		<script src="neo.js<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>"></script>
 		<% /def %>
 		<% def(pch_mode) %>
-		<link rel="stylesheet" href="neo.css" type="text/css">
-		<script src="neo.js" charset="UTF-8"></script>
+		<link rel="stylesheet" href="neo.css<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>" type="text/css">
+		<script src="neo.js<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>"></script>
 		<% /def %>
 		<!-- Javaが使えるかどうか判定 使えなければcheerpJをロード -->
 		<% def(chickenpaint)%>
@@ -27,56 +27,55 @@
 			if (window.PointerEvent) {
 				window.hasNativePointerEvents = true;
 			}
-	</script>
-	<script src="chickenpaint/js/chickenpaint.js?210518"></script>
-	<link rel="stylesheet" type="text/css" href="chickenpaint/css/chickenpaint.css?210512">
-	<% elsedef %>
-	<script>
-		function cheerpJLoad() {
-		var jEnabled = navigator.javaEnabled();
-		if(!jEnabled){
-			var sN = document.createElement("script");
-			sN.src = "https://cjrtnc.leaningtech.com/latest/loader.js";
-			var s0 = document.getElementsByTagName("script")[0];
-			s0.parentNode.insertBefore(sN, s0);
-			sN.addEventListener("load", function(){ cheerpjInit(); }, false);
-			}
-		}
-		window.addEventListener("load", function() { cheerpJLoad(); }, false);
-	</script>
-	<% /def %>
-	<script>
-		var css = GetCookie("CSS");
-		if(css == ""){css = "<% echo(skindir) %>css/mono_dev.min.css";}
-		document.write('<link rel="stylesheet" href="' + css + '" type="text/css">');
-		function SetCss(obj){
-			var idx = obj.selectedIndex;
-			file = obj.options[idx].value;
-			SetCookie("CSS", file);
-			window.location.reload();
-		}
-		function GetCookie(key){
-			var tmp = document.cookie + ";";
-			var tmp1 = tmp.indexOf(key, 0);
-			if(tmp1 != -1){
-				tmp = tmp.substring(tmp1, tmp.length);
-				var start = tmp.indexOf("=", 0) + 1;
-				var end = tmp.indexOf(";", start);
-				return(unescape(tmp.substring(start,end)));
+		</script>
+		<script src="chickenpaint/js/chickenpaint.min.js<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>"></script>
+		<link rel="stylesheet" type="text/css" href="chickenpaint/css/chickenpaint.css<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>">
+		<% elsedef %>
+		<script>
+			function cheerpJLoad() {
+			var jEnabled = navigator.javaEnabled();
+			if(!jEnabled){
+				var sN = document.createElement("script");
+				sN.src = "https://cjrtnc.leaningtech.com/latest/loader.js";
+				var s0 = document.getElementsByTagName("script")[0];
+				s0.parentNode.insertBefore(sN, s0);
+				sN.addEventListener("load", function(){ cheerpjInit(); }, false);
 				}
-			return("");
-		}
-		function SetCookie(key, val){
-			document.cookie = key + "=" + escape(val) + ";max-age=31536000;";
-		}
-	</script>
-	<noscript>
-		<link rel="stylesheet" href="<% echo(skindir) %>css/mono_main.css" type="text/css">
-	</noscript>
+			}
+			window.addEventListener("load", function() { cheerpJLoad(); }, false);
+		</script>
+		<% /def %>
+		<script>
+			var css = GetCookie("CSS");
+			if(css == ""){css = "<% echo(skindir) %>css/mono_dev.min.css";}
+			document.write('<link rel="stylesheet" href="' + css + '" type="text/css">');
+			function SetCss(obj){
+				var idx = obj.selectedIndex;
+				file = obj.options[idx].value;
+				SetCookie("CSS", file);
+				window.location.reload();
+			}
+			function GetCookie(key){
+				var tmp = document.cookie + ";";
+				var tmp1 = tmp.indexOf(key, 0);
+				if(tmp1 != -1){
+					tmp = tmp.substring(tmp1, tmp.length);
+					var start = tmp.indexOf("=", 0) + 1;
+					var end = tmp.indexOf(";", start);
+					return(unescape(tmp.substring(start,end)));
+					}
+				return("");
+			}
+			function SetCookie(key, val){
+				document.cookie = key + "=" + escape(val) + ";max-age=31536000;";
+			}
+		</script>
+		<noscript>
+			<link rel="stylesheet" href="<% echo(skindir) %>css/mono_main.css" type="text/css">
+		</noscript>
 	</head>
-
+	
 	<body id="paintmode">
-		
 		<% def(chickenpaint)%>
 		<% elsedef %>
 		<header>
@@ -555,19 +554,7 @@
 					<% /def %>
 					<% def(passflag) %>Pass<input class="form" type="password" name="pwd" size="8" value=""> <% /def %>
 					<input class="button" type="submit" value="続きを描く">
-					<input type="hidden" name="is_mobile" id="is_mobile" value>
 				</form>
-				<style id="for_mobile"></style>
-					<script>
-						function is_mobile() {
-							if (navigator.maxTouchPoints && ( window.matchMedia && window.matchMedia('(max-width: 533px)').matches))  return true;
-							return false;
-						}
-						if(is_mobile()){
-							document.getElementById("is_mobile").value = "true";
-							document.getElementById("for_mobile").textContent=".for_pc{display: none;}";
-						}
-					</script>
 				<ul>
 					<% def(newpost_nopassword) %>
 					<li>新規投稿なら削除キーがなくても続きを描く事ができます。</li>
@@ -588,27 +575,29 @@
 				<!-- 著作権表示 削除しないでください -->
 				<!-- GazouBBS v3.0 --><!-- ふたば改0.8 --><!-- POTI-board -->
 				<p>
-					<a href="https://pbbs.sakura.ne.jp/poti/" target="_blank" rel="nofollow noopener noreferrer" title="POTI-board EVO <% echo(verlot) %>">POTI-board EVO <% echo(ver) %></a>
-					Web Style by <a href="https://pbbs.sakura.ne.jp/poti/" target="_blank" rel="nofollow noopener noreferrer" title="MONO <% echo(tver) %>">MONO</a>
+					<a href="https://pbbs.sakura.ne.jp/poti/" target="_top" title="POTI-board EVO <% echo(verlot) %>">POTI-board EVO <% echo(ver) %></a>
+					Web Style by <a href="https://github.com/sakots/poti-EVO-themes" target="_top" title="MONO_DEV <% echo(tver) %>">MONO_DEV</a>
 				</p>
 				<p>
 					OriginalScript -
-					<a href="http://www.punyu.net/" target="_blank" rel="nofollow noopener noreferrer" title="POTI-board (by PunyuNet)">POTI-board</a>
-					<a href="http://www.2chan.net/" target="_blank" rel="nofollow noopener noreferrer" title="futaba.php v0.8 lot.031015 (by futaba)">futaba.php</a>
-					(<a href="http://php.loglog.jp/" target="_blank" rel="nofollow noopener noreferrer" title="gazou.php v3.0 (by Let's PHP!)">gazou.php</a>custom )
+					<a href="http://www.punyu.net/" target="_top" title="POTI-board (by PunyuNet)">POTI-board</a>
+					<a href="http://www.2chan.net/" target="_top" title="futaba.php v0.8 lot.031015 (by futaba)">futaba.php</a>
+					(<a href="http://php.loglog.jp/" target="_top" title="gazou.php v3.0 (by Let's PHP!)">gazou.php</a>custom )
 				</p>
 				<% def(paint) %>
 				<p>
-					OekakiApplet - <a href="http://hp.vector.co.jp/authors/VA016309/" target="_blank" rel="noopener noreferrer" title="by しぃちゃん">Shi-Painter</a>
-					<a href="https://github.com/funige/neo/" target="_blank" rel="nofollow noopener noreferrer" title="by funige">PaintBBS NEO</a>
-					<a href="https://github.com/thenickdude/chickenpaint" target="_blank" rel="nofollow noopener noreferrer" title="by Nicholas Sherlock">ChickenPaint</a>
+					
+				</p>
+				<p>
+					OekakiApplet - <a href="http://hp.vector.co.jp/authors/VA016309/" target="_blank" rel="noopener noreferrer" title="by しぃちゃん">Shi-Painter</a>,
+					<a href="https://github.com/funige/neo/" target="_top" title="by ImageCanvas">PaintBBS NEO</a>,
+					<a href="https://github.com/thenickdude/chickenpaint" target="_blank" rel="noopener noreferrer" title="by Nicholas Sherlock">ChickenPaint</a>
 				</p>
 				<% /def %>
 				<p>
 					UseFunction -
-					<a href="http://skinny.sx68.net/" target="_blank" rel="nofollow noopener noreferrer" title="Skinny.php (by Kuasuki)">Skinny.php</a>
+					<a href="http://skinny.sx68.net/" target="_top" title="Skinny.php (by Kuasuki)">Skinny.php</a>
 					DynamicPalette <!-- http://wondercatstudio.com/ -->
-					
 				</p>
 			</article>
 		</footer>
