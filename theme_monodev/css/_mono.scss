@@ -329,6 +329,13 @@ div#chickenpaint-parent {
   word-break:　initial;
 }
 
+.del_page {
+  display: inline-block;
+  form {
+    display: inline-block;
+  }
+}
+
 //以下レスポンシブ対応
 @media screen and (max-width: 1024px) {
   header, main > section > .thread, main > article#catalog, footer > article {

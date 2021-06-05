@@ -289,8 +289,27 @@
 						<input class="button" type="submit" value="DELETE">
 						<input class="button" type="reset" value="RESET">
 					</form>
+					<% def(del_page)%>
+						<%each(del_page)%>
+						<div class="del_page">
+							[
+							<form action="<% echo(self) %>" method="post" id="form_page<% echo(del_page/no) %>">
+								<input type="hidden" name="mode" value="admin">
+								<input type="hidden" name="admin" value="del">
+								<input type="hidden" name="pass" value="<% echo(pass) %>">
+								<input type="hidden" name="del_pageno" value="<% echo(del_page/no) %>">
+								<% def(del_page/notlink)%>
+									<% echo(del_page/pageno) %>
+								<% elsedef %>
+									<a href="javascript:form_page<% echo(del_page/no) %>.submit()"><% echo(del_page/pageno) %></a>
+								<% /def %>
+							</form>
+							]
+						</div>
+						<% /each %>
+					<% /def % %>
 					<p>&lt;&lt;Image all size : <% echo(all) %> KB &gt;&gt;</p>
-				</div>
+				</%def>
 			</section>
 			<!-- (========== ADMIN MODE -DELETE-(管理モード(削除)) end ==========) -->
 			<% /def %>
@@ -313,7 +332,7 @@
 				<!-- GazouBBS v3.0 --><!-- ふたば改0.8 --><!-- POTI-board -->
 				<p>
 					<a href="https://pbbs.sakura.ne.jp/poti/" target="_top" title="POTI-board EVO <% echo(verlot) %>">POTI-board EVO <% echo(ver) %></a>
-					Web Style by <a href="https://github.com/sakots/poti-EVO-themes" target="_top" title="MONO_DEV <% echo(tver) %>">MONO_DEV</a>
+					Web Style by <a href="https://dev.oekakibbs.net/" target="_top" title="MONO_DEV <% echo(tver) %>">MONO_DEV</a>
 				</p>
 				<p>
 					OriginalScript -
@@ -323,18 +342,15 @@
 				</p>
 				<% def(paint) %>
 				<p>
-					
-				</p>
-				<p>
-					OekakiApplet - <a href="http://hp.vector.co.jp/authors/VA016309/" target="_blank" rel="noopener noreferrer" title="by しぃちゃん">Shi-Painter</a>,
+					OekakiApp - <a href="http://hp.vector.co.jp/authors/VA016309/" target="_blank" rel="noopener noreferrer" title="by しぃちゃん">Shi-Painter</a>,
 					<a href="https://github.com/funige/neo/" target="_top" title="by ImageCanvas">PaintBBS NEO</a>,
 					<a href="https://github.com/thenickdude/chickenpaint" target="_blank" rel="noopener noreferrer" title="by Nicholas Sherlock">ChickenPaint</a>
 				</p>
 				<% /def %>
 				<p>
 					UseFunction -
+					DynamicPalette, <!-- http://wondercatstudio.com/ -->
 					<a href="http://skinny.sx68.net/" target="_top" title="Skinny.php (by Kuasuki)">Skinny.php</a>
-					DynamicPalette <!-- http://wondercatstudio.com/ -->
 				</p>
 			</article>
 		</footer>

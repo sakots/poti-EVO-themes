@@ -394,6 +394,14 @@ div#chickenpaint-parent {
   word-break: 　initial;
 }
 
+.del_page {
+  display: inline-block;
+}
+
+.del_page form {
+  display: inline-block;
+}
+
 @media screen and (max-width: 1024px) {
   header, main > section > .thread, main > article#catalog, footer > article, footer > article.copy, main > section > .thread, main > article#catalog, footer > article {
     width: 90%;
