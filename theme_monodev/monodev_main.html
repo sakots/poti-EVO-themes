@@ -116,6 +116,12 @@
 								<% /def %>
 							</select>
 							<% /def %>
+							<!-- 選択メニューを出さない時に起動するアプリ -->
+							<% def(app_to_use) %>
+							<input type="hidden" name="shi" value="<% echo(app_to_use) %>">
+							<% /def %>
+		
+
 							<% def(use_select_palettes) %>
 							パレット：<select name="selected_palette_no" title="パレット" class="form"><% echo(palette_select_tags) %></select>
 							<% /def %>
