@@ -542,9 +542,6 @@
 						<% def(use_shi_painter) %><option value="1">しぃペインター</option><% /def %>
 						<% def(use_chickenpaint) %><option value="chicken">ChickenPaint</option><% /def %>
 					</select>
-					<% elsedef %>
-					<!-- 選択メニューを出さない時に起動するアプリ -->
-					<input type="hidden" name="shi" value="neo">
 					<% /def %>
 					<% def(app_to_use) %>
 					<input type="hidden" name="shi" value="<% echo(app_to_use) %>">
