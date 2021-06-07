@@ -542,9 +542,6 @@
 						<% def(use_shi_painter) %><option value="1">しぃペインター</option><% /def %>
 						<% def(use_chickenpaint) %><option value="chicken">ChickenPaint</option><% /def %>
 					</select>
-					<% elsedef %>
-					<!-- 選択メニューを出さない時に起動するアプリ -->
-					<input type="hidden" name="shi" value="neo">
 					<% /def %>
 					<% def(app_to_use) %>
 					<input type="hidden" name="shi" value="<% echo(app_to_use) %>">
@@ -587,7 +584,7 @@
 				<% def(paint) %>
 				<p>
 					OekakiApp - <a href="http://hp.vector.co.jp/authors/VA016309/" target="_blank" rel="noopener noreferrer" title="by しぃちゃん">Shi-Painter</a>,
-					<a href="https://github.com/funige/neo/" target="_top" title="by ImageCanvas">PaintBBS NEO</a>,
+					<a href="https://github.com/funige/neo/" target="_top" title="by funige">PaintBBS NEO</a>,
 					<a href="https://github.com/thenickdude/chickenpaint" target="_blank" rel="noopener noreferrer" title="by Nicholas Sherlock">ChickenPaint</a>
 				</p>
 				<% /def %>

@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="<% echo(charset) %>">
 		<title><% echo(title) %></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<script>
 			var css = GetCookie("CSS");
 			if(css == ""){css = "<% echo(skindir) %>css/mono_dev.min.css";}
@@ -115,6 +116,12 @@
 								<% /def %>
 							</select>
 							<% /def %>
+							<!-- 選択メニューを出さない時に起動するアプリ -->
+							<% def(app_to_use) %>
+							<input type="hidden" name="shi" value="<% echo(app_to_use) %>">
+							<% /def %>
+		
+
 							<% def(use_select_palettes) %>
 							パレット：<select name="selected_palette_no" title="パレット" class="form"><% echo(palette_select_tags) %></select>
 							<% /def %>
@@ -369,7 +376,7 @@
 				<% def(paint) %>
 				<p>
 					OekakiApp - <a href="http://hp.vector.co.jp/authors/VA016309/" target="_blank" rel="noopener noreferrer" title="by しぃちゃん">Shi-Painter</a>,
-					<a href="https://github.com/funige/neo/" target="_top" title="by ImageCanvas">PaintBBS NEO</a>,
+					<a href="https://github.com/funige/neo/" target="_top" title="by funige">PaintBBS NEO</a>,
 					<a href="https://github.com/thenickdude/chickenpaint" target="_blank" rel="noopener noreferrer" title="by Nicholas Sherlock">ChickenPaint</a>
 				</p>
 				<% /def %>
