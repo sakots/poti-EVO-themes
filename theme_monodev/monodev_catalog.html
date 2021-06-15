@@ -15,6 +15,7 @@
 				var idx = obj.selectedIndex;
 				file = obj.options[idx].value;
 				SetCookie("CSS", file);
+				SetCookie("CSSIdx",idx);
 				window.location.reload();
 			}
 			function GetCookie(key){
@@ -145,5 +146,9 @@
 				</p>
 			</article>		
 		</footer>
+		<script>
+		let CSSIdx=GetCookie('CSSIdx');
+		document.getElementById("mystyle").selectedIndex=CSSIdx;
+		</script>
 	</body>
 </html>

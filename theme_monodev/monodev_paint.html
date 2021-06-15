@@ -57,6 +57,7 @@
 				var idx = obj.selectedIndex;
 				file = obj.options[idx].value;
 				SetCookie("CSS", file);
+				SetCookie("CSSIdx",idx);
 				window.location.reload();
 			}
 			function GetCookie(key){
