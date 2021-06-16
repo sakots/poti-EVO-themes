@@ -15,7 +15,7 @@
 				var idx = obj.selectedIndex;
 				file = obj.options[idx].value;
 				SetCookie("CSS", file);
-				SetCookie("CSSIdx",idx);
+				SetCookie("colorIdx",idx);
 				window.location.reload();
 			}
 			function GetCookie(key){
@@ -395,8 +395,8 @@
 					$(this).closest('form').submit();
 				});
 			});
-		let CSSIdx=GetCookie('CSSIdx');
-		document.getElementById("mystyle").selectedIndex=CSSIdx;
+		let colorIdx=GetCookie('colorIdx');
+		document.getElementById("mystyle").selectedIndex=colorIdx;
 		</script>
 	</body>
 </html>
