@@ -5,11 +5,13 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<style>body{display: none;} </style>
 	<script>
-		var css = GetCookie("CSS");
+		let css = GetCookie("CSS");
 		if(css == ""){css = "<% echo(skindir) %>css/mono_dev.min.css";}
-		var link = document.createElement("link");
+		const link = document.createElement("link");
 			link.rel = "stylesheet";
 			link.href =  css ;
+			link.addEventListener('load', () => {
+			document.getElementsByTagName("body")[0].style.display = "initial";});
 			document.getElementsByTagName("head")[0].appendChild(link);
 		function SetCss(file){
 			SetCookie("CSS", file);
@@ -132,14 +134,6 @@
 	<div class="clear"></div>
 	</nav>
 </footer>
-<script>
-	//すべて読みこんでからbodyを表示
-	window.onload = function() {
-	document.getElementsByTagName("body")[0].style.display = "initial";
-	}
-</script>
-
-
 </div>
 </body>
 </html>
