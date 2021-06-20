@@ -22,6 +22,14 @@
 		<% /def %>
 		<!-- Javaが使えるかどうか判定 使えなければcheerpJをロード -->
 		<% def(chickenpaint)%>
+		<style>
+			div#chickenpaint-parent :not(input){
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			}
+		</style>
 		<script type="text/javascript">
 		/* Check for native pointer event support before PEP adds its polyfill */
 			if (window.PointerEvent) {
@@ -63,7 +71,7 @@
 					tmp = tmp.substring(tmp1, tmp.length);
 					var start = tmp.indexOf("=", 0) + 1;
 					var end = tmp.indexOf(";", start);
-					return(unescape(tmp.substring(start,end)));
+					return(decodeURIComponent(tmp.substring(start,end)));
 					}
 				return("");
 			}
