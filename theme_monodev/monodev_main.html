@@ -4,14 +4,19 @@
 		<meta charset="<% echo(charset) %>">
 		<title><% echo(title) %></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
+		  <link rel="stylesheet" href="<% echo(skindir) %>css/mono_main.min.css" type="text/css">
 		<script>
 			var css = GetCookie("CSS");
 			if(css == ""){css = "<% echo(skindir) %>css/mono_dev.min.css";}
-			document.write('<link rel="stylesheet" href="' + css + '" type="text/css">');
+			var link = document.createElement("link");
+			link.rel = "stylesheet";
+			link.href =  css ;
+			document.getElementsByTagName("head")[0].appendChild(link);
 			function SetCss(obj){
 				var idx = obj.selectedIndex;
 				file = obj.options[idx].value;
 				SetCookie("CSS", file);
+				SetCookie("colorIdx",idx);
 				window.location.reload();
 			}
 			function GetCookie(key){
@@ -21,7 +26,7 @@
 					tmp = tmp.substring(tmp1, tmp.length);
 					var start = tmp.indexOf("=", 0) + 1;
 					var end = tmp.indexOf(";", start);
-					return(unescape(tmp.substring(start,end)));
+					return(decodeURIComponent(tmp.substring(start,end)));
 					}
 				return("");
 			}
@@ -29,9 +34,7 @@
 				document.cookie = key + "=" + escape(val) + ";max-age=31536000;";
 			}
 		</script>
-		<noscript>
-			<link rel="stylesheet" href="<% echo(skindir) %>css/mono_dev.min.css" type="text/css">
-		</noscript>
+	  
 		<% def(notres) %>
 		<% def(n) %>
 		このあたりは各自変更してもらえると嬉しいです
@@ -285,12 +288,8 @@
 							<% /def %>
 							<% def(sharebutton) %>
 							<span class="share_button">
-								<script>
-									(function(){
-										var url = encodeURIComponent('<% echo(rooturl) %><% echo(self) %>?res=<% echo(oya/no) %>'); //ページURL。一応エンコード
-										var title = encodeURIComponent('[<% echo(oya/no) %>] <% echo(oya/sub) %> by <% echo(oya/name) %> - <% echo(title) %>'); //ページタイトル。同上。
-									document.write( '<a target="_blank" href="https://twitter.com/intent/tweet?&text=' + title + '&url=' + url + '"><span class="icon-twitter button"><img src="<% echo(skindir) %>img/twitter.svg" alt=""> tweet</span></a> <a target="_blank" class="fb btn" href="http://www.facebook.com/share.php?u=' + url + '"><span class="icon-facebook2 button"><img src="<% echo(skindir) %>img/facebook.svg" alt=""> share</span></a>' );})();
-								</script>
+							<a target="_blank" href="https://twitter.com/intent/tweet?&text=%5B<% echo(oya/no|urlencode) %>%5D <% echo(oya/sub|urlencode) %> by <% echo(oya/name|urlencode) %> - <% echo(title|urlencode) %>&url=<% echo(rooturl|urlencode) %><% echo(self|urlencode) %>?res=<% echo(oya/no|urlencode) %>"><span class="icon-twitter button"><img src="<% echo(skindir) %>img/twitter.svg" alt=""> tweet</span></a>
+							<a target="_blank" class="fb btn" href="http://www.facebook.com/share.php?u=<% echo(rooturl|urlencode) %><% echo(self|urlencode) %>?res=<% echo(oya/no|urlencode) %>"><span class="icon-facebook2 button"><img src="<% echo(skindir) %>img/facebook.svg" alt=""> share</span></a>
 							</span>
 							<% /def %>
 							<% def(notres) %><span class="button"><a href="<% echo(self) %>?res=<% echo(oya/no) %>"><img src="<% echo(skindir) %>img/rep.svg" alt=""> 返信</a></span> <a href="#header" title="一番上へ">[↑]</a><% /def %>
@@ -343,9 +342,8 @@
 						</select>
 						<label>[<input type="checkbox" name="onlyimgdel" value="on">ImageOnly]</label>
 						<input class="button" type="submit" value=" OK ">
-						<span class="stylechanger">
-							<select class="form" name="select" id="mystyle" onchange="SetCss(this);">
-								<option value="<% echo(skindir) %>css/mono_dev.min.css">Color</option>
+						<span class="stylechanger">Color: 
+							<select class="form" id="mystyle" onchange="SetCss(this);">
 								<option value="<% echo(skindir) %>css/mono_dev.min.css">DEV</option>
 								<option value="<% echo(skindir) %>css/mono_main.min.css">MONO</option>
 								<option value="<% echo(skindir) %>css/mono_dark.min.css">dark</option>
@@ -395,6 +393,8 @@
 					$(this).closest('form').submit();
 				});
 			});
+			let colorIdx=GetCookie('colorIdx');
+			document.getElementById("mystyle").selectedIndex=colorIdx;
 		</script>
 	</body>
 </html>
