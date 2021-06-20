@@ -54,14 +54,19 @@
 			window.addEventListener("load", function() { cheerpJLoad(); }, false);
 		</script>
 		<% /def %>
+		  <link rel="stylesheet" href="<% echo(skindir) %>css/mono_main.min.css" type="text/css">
 		<script>
 			var css = GetCookie("CSS");
 			if(css == ""){css = "<% echo(skindir) %>css/mono_dev.min.css";}
-			document.write('<link rel="stylesheet" href="' + css + '" type="text/css">');
+			var link = document.createElement("link");
+			link.rel = "stylesheet";
+			link.href =  css ;
+			document.getElementsByTagName("head")[0].appendChild(link);
 			function SetCss(obj){
 				var idx = obj.selectedIndex;
 				file = obj.options[idx].value;
 				SetCookie("CSS", file);
+				SetCookie("colorIdx",idx);
 				window.location.reload();
 			}
 			function GetCookie(key){
@@ -79,10 +84,7 @@
 				document.cookie = key + "=" + escape(val) + ";max-age=31536000;";
 			}
 		</script>
-		<noscript>
-			<link rel="stylesheet" href="<% echo(skindir) %>css/mono_main.css" type="text/css">
-		</noscript>
-	</head>
+		</head>
 	
 	<body id="paintmode">
 		<% def(chickenpaint)%>

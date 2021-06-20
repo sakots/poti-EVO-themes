@@ -4,14 +4,19 @@
 		<meta charset="<% echo(charset) %>">
 		<title><% echo(title) %></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
+		  <link rel="stylesheet" href="<% echo(skindir) %>css/mono_main.min.css" type="text/css">
 		<script>
 			var css = GetCookie("CSS");
 			if(css == ""){css = "<% echo(skindir) %>css/mono_dev.min.css";}
-			document.write('<link rel="stylesheet" href="' + css + '" type="text/css">');
+			var link = document.createElement("link");
+			link.rel = "stylesheet";
+			link.href =  css ;
+			document.getElementsByTagName("head")[0].appendChild(link);
 			function SetCss(obj){
 				var idx = obj.selectedIndex;
 				file = obj.options[idx].value;
 				SetCookie("CSS", file);
+				SetCookie("colorIdx",idx);
 				window.location.reload();
 			}
 			function GetCookie(key){
@@ -29,9 +34,7 @@
 				document.cookie = key + "=" + escape(val) + ";max-age=31536000;";
 			}
 		</script>
-		<noscript>
-			<link rel="stylesheet" href="<% echo(skindir) %>css/mono_dev.min.css" type="text/css">
-		</noscript>
+	  
 	</head>
 	<body>
 		<header>
@@ -98,9 +101,8 @@
 						</select>
 						<label>[<input type="checkbox" name="onlyimgdel" value="on">ImageOnly]</label>
 						<input class="button" type="submit" value=" OK ">
-						<span class="stylechanger">
-							<select class="form" name="select" id="mystyle" onchange="SetCss(this);">
-								<option value="<% echo(skindir) %>css/mono_dev.min.css">Color</option>
+						<span class="stylechanger">Color: 
+							<select class="form" id="mystyle" onchange="SetCss(this);">
 								<option value="<% echo(skindir) %>css/mono_dev.min.css">DEV</option>
 								<option value="<% echo(skindir) %>css/mono_main.min.css">MONO</option>
 								<option value="<% echo(skindir) %>css/mono_dark.min.css">dark</option>
@@ -142,5 +144,9 @@
 				</p>
 			</article>		
 		</footer>
+		<script>
+			let colorIdx=GetCookie('colorIdx');
+			document.getElementById("mystyle").selectedIndex=colorIdx;
+		</script>
 	</body>
 </html>
