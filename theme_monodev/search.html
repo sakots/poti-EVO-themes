@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	  <link rel="stylesheet" href="<% echo(skindir) %>css/mono_main.min.css" type="text/css">
+	<link rel="stylesheet" href="<% echo(skindir) %>css/mono_dev.min.css" type="text/css">
 	<script>
 		var css = GetCookie("CSS");
 		if(css == ""){css = "<% echo(skindir) %>css/mono_dev.min.css";}
@@ -61,12 +61,10 @@
 	<div class="menu">
 	[<a href="./">掲示板にもどる</a>]
 	<% def(imgsearch) %>
-	 [<a href="?page=1&imgsearch=off<% echo(query_l) %>">コメント</a>]
-	 <% else %>
-	 [<a href="?page=1&imgsearch=on<% echo(query_l) %>">イラスト</a>]
-	 <% /def %>
-	 
-
+	[<a href="?page=1&imgsearch=off<% echo(query_l) %>">コメント</a>]
+	<% else %>
+	[<a href="?page=1&imgsearch=on<% echo(query_l) %>">イラスト</a>]
+	<% /def %>
 	</div>
 </nav>
 <p></p>
@@ -98,14 +96,14 @@
 		<div class="article">
 		<div class="comments_title_wrap">
 			<h2><a href="<% echo(comments/link) %>" target="_blank"><% echo(comments/sub) %></a></h2>
-			 <% echo(comments/postedtime) %><br><span class="name"><a href="?page=1&query=<% echo(comments/encoded_name) %>&radio=2" target="_blank"><% echo(comments/name) %></a></span></div>
-			 <% def(comments/img) %>
-			 <a href="<% echo(comments/link) %>" target="_blank"><img src="<% echo(comments/img) %>" alt="<% echo(comments/sub) %> by <% echo(comments/name) %>"></a><br>
-			 <% /def %>
-			 <% echo(comments/com) %>
-			 <div class="res_button_wrap">
-				 <form action="<% echo(comments/link) %>" method="post" target="_blank"><input type="submit" value="返信" class="res_button"></form><span class="page_top"><a href="#top">△</a></span>
-		</div>
+			<% echo(comments/postedtime) %><br><span class="name"><a href="?page=1&query=<% echo(comments/encoded_name) %>&radio=2" target="_blank"><% echo(comments/name) %></a></span></div>
+			<% def(comments/img) %>
+			<a href="<% echo(comments/link) %>" target="_blank"><img src="<% echo(comments/img) %>" alt="<% echo(comments/sub) %> by <% echo(comments/name) %>"></a><br>
+			<% /def %>
+			<% echo(comments/com) %>
+			<div class="res_button_wrap">
+				<form action="<% echo(comments/link) %>" method="post" target="_blank"><input type="submit" value="返信" class="res_button"></form><span class="page_top"><a href="#top">△</a></span>
+			</div>
 		</div>
 	</article>
 		<% /def %>
