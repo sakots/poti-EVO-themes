@@ -14,11 +14,12 @@ label {
 //全体的指定
 body {
   @if $dev == 1 {
+    background-color: unset;
     background-attachment: fixed;
-    background:
-    linear-gradient( #121, #010)
-    fixed;
+    background: linear-gradient( #121, #010) fixed;
   } @else {
+    background: unset;
+    background-attachment: unset;
     background-color: $ushiro;
   }
   color: $moji;
@@ -179,10 +180,10 @@ h1 a {
 h2 {
   border-left: solid 1ex $border;
   @if $dev == 1 {
-    background:
-    linear-gradient(to right, #010, #121, #322)
-    fixed;
+    background-color: unset;
+    background: linear-gradient(to right, #010, #121, #322) fixed;
   } @else {
+    background: unset;
     background-color: $th_bg;
   }
   padding-left: 5px;

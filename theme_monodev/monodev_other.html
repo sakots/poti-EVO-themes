@@ -4,7 +4,7 @@
 		<meta charset="<% echo(charset) %>">
 		<title><% echo(title) %></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		  <link rel="stylesheet" href="<% echo(skindir) %>css/mono_main.min.css" type="text/css">
+		<link rel="stylesheet" href="<% echo(skindir) %>css/mono_dev.min.css" type="text/css">
 		<script>
 			var css = GetCookie("CSS");
 			if(css == ""){css = "<% echo(skindir) %>css/mono_dev.min.css";}
@@ -34,7 +34,6 @@
 				document.cookie = key + "=" + escape(val) + ";max-age=31536000;";
 			}
 		</script>
-	  
 	</head>
 	<body>
 		<header>
