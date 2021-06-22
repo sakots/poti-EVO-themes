@@ -9,42 +9,42 @@
 		<link rel="stylesheet" href="<% echo(skindir) %>css/mono_dark.min.css" id="css2" disabled>
 		<link rel="stylesheet" href="<% echo(skindir) %>css/mono_deep.min.css" id="css3" disabled>
 		<link rel="stylesheet" href="<% echo(skindir) %>css/mono_mayo.min.css" id="css4" disabled>
-	<script>
-		var colorIdx = GetCookie("colorIdx");
-			switch (Number(colorIdx)) {
-			case 1:
-				document.getElementById("css1").removeAttribute("disabled");
-				break;
-			case 2:
-				document.getElementById("css2").removeAttribute("disabled");
-				break;
-			case 3:
-				document.getElementById("css3").removeAttribute("disabled");
-				break;
-			case 4:
-				document.getElementById("css4").removeAttribute("disabled");
-				break;
-		} 
-		function SetCss(obj){
-			var idx = obj.selectedIndex;
-			SetCookie("colorIdx",idx);
-			window.location.reload();
-		}
-		function GetCookie(key){
-			var tmp = document.cookie + ";";
-			var tmp1 = tmp.indexOf(key, 0);
-			if(tmp1 != -1){
-				tmp = tmp.substring(tmp1, tmp.length);
-				var start = tmp.indexOf("=", 0) + 1;
-				var end = tmp.indexOf(";", start);
-				return(decodeURIComponent(tmp.substring(start,end)));
-				}
-			return("");
-		}
-		function SetCookie(key, val){
-			document.cookie = key + "=" + encodeURIComponent(val) + ";max-age=31536000;";
-		}
-	</script>
+		<script>
+			var colorIdx = GetCookie("colorIdx");
+				switch (Number(colorIdx)) {
+				case 1:
+					document.getElementById("css1").removeAttribute("disabled");
+					break;
+				case 2:
+					document.getElementById("css2").removeAttribute("disabled");
+					break;
+				case 3:
+					document.getElementById("css3").removeAttribute("disabled");
+					break;
+				case 4:
+					document.getElementById("css4").removeAttribute("disabled");
+					break;
+			} 
+			function SetCss(obj){
+				var idx = obj.selectedIndex;
+				SetCookie("colorIdx",idx);
+				window.location.reload();
+			}
+			function GetCookie(key){
+				var tmp = document.cookie + ";";
+				var tmp1 = tmp.indexOf(key, 0);
+				if(tmp1 != -1){
+					tmp = tmp.substring(tmp1, tmp.length);
+					var start = tmp.indexOf("=", 0) + 1;
+					var end = tmp.indexOf(";", start);
+					return(decodeURIComponent(tmp.substring(start,end)));
+					}
+				return("");
+			}
+			function SetCookie(key, val){
+				document.cookie = key + "=" + encodeURIComponent(val) + ";max-age=31536000;";
+			}
+		</script>
 		<% def(notres) %>
 		<% def(n) %>
 		このあたりは各自変更してもらえると嬉しいです
@@ -390,7 +390,8 @@
 				<% /def %>
 				<p>
 					UseFunction -
-					DynamicPalette, <!-- http://wondercatstudio.com/ -->
+					<!-- http://wondercatstudio.com/ -->DynamicPalette,
+					<a href="https://huruihone.tumblr.com/" target="_top" rel="noopener noreferrer" title="by Soto">AppletFit</a>,
 					<a href="http://skinny.sx68.net/" target="_top" title="Skinny.php (by Kuasuki)">Skinny.php</a>
 				</p>
 			</article>

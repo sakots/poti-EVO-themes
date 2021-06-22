@@ -59,45 +59,86 @@
 		<link rel="stylesheet" href="<% echo(skindir) %>css/mono_dark.min.css" id="css2" disabled>
 		<link rel="stylesheet" href="<% echo(skindir) %>css/mono_deep.min.css" id="css3" disabled>
 		<link rel="stylesheet" href="<% echo(skindir) %>css/mono_mayo.min.css" id="css4" disabled>
-	<script>
-		var colorIdx = GetCookie("colorIdx");
-			switch (Number(colorIdx)) {
-			case 1:
-				document.getElementById("css1").removeAttribute("disabled");
-				break;
-			case 2:
-				document.getElementById("css2").removeAttribute("disabled");
-				break;
-			case 3:
-				document.getElementById("css3").removeAttribute("disabled");
-				break;
-			case 4:
-				document.getElementById("css4").removeAttribute("disabled");
-				break;
-		} 
-		function SetCss(obj){
-			var idx = obj.selectedIndex;
-			SetCookie("colorIdx",idx);
-			window.location.reload();
-		}
-		function GetCookie(key){
-			var tmp = document.cookie + ";";
-			var tmp1 = tmp.indexOf(key, 0);
-			if(tmp1 != -1){
-				tmp = tmp.substring(tmp1, tmp.length);
-				var start = tmp.indexOf("=", 0) + 1;
-				var end = tmp.indexOf(";", start);
-				return(decodeURIComponent(tmp.substring(start,end)));
+		<script>
+			var colorIdx = GetCookie("colorIdx");
+				switch (Number(colorIdx)) {
+				case 1:
+					document.getElementById("css1").removeAttribute("disabled");
+					break;
+				case 2:
+					document.getElementById("css2").removeAttribute("disabled");
+					break;
+				case 3:
+					document.getElementById("css3").removeAttribute("disabled");
+					break;
+				case 4:
+					document.getElementById("css4").removeAttribute("disabled");
+					break;
+			} 
+			function SetCss(obj){
+				var idx = obj.selectedIndex;
+				SetCookie("colorIdx",idx);
+				window.location.reload();
+			}
+			function GetCookie(key){
+				var tmp = document.cookie + ";";
+				var tmp1 = tmp.indexOf(key, 0);
+				if(tmp1 != -1){
+					tmp = tmp.substring(tmp1, tmp.length);
+					var start = tmp.indexOf("=", 0) + 1;
+					var end = tmp.indexOf(";", start);
+					return(decodeURIComponent(tmp.substring(start,end)));
+					}
+				return("");
+			}
+			function SetCookie(key, val){
+				document.cookie = key + "=" + encodeURIComponent(val) + ";max-age=31536000;";
+			}
+		</script>
+		<% def(chickenpaint)%>
+		<% elsedef %>
+		<!-- アプレットフィット -->
+		<script>
+			function appfit(f) {
+					var d = document;
+					var client = d.compatMode && d.compatMode != "BackCompat" ? d.documentElement : d.body;
+					var chei = client.clientHeight - 10;
+					var neo = d.getElementById("NEO");
+					if (!neo) { //しぃぺいんたー
+						var target = d.paintbbs;
+						if(f == 0) { //ひろげる
+							var cwid = client.clientWidth - 360;
+							if (cwid > target.width) { target.width = cwid; }
+							if (chei > target.height) { target.height = chei; }
+							document.getElementById("fit_exp").style.display="none";
+							document.getElementById("fit_comp").style.display="block";
+						} else if (f == 1) { //もどす
+							target.width = <% echo(w) %>;
+							target.height = <% echo(h) %>;
+							document.getElementById("fit_exp").style.display="block";
+							document.getElementById("fit_comp").style.display="none";
+						}
+					} else { //NEO
+						var target = d.getElementById("pageView");
+						if (f == 0) { //ひろげる
+							var cwid = d.getElementById("appstage").scrollWidth - 360;
+							if (cwid > target.clientWidth) { target.style.width = cwid + "px"; }
+							if (chei > target.clientHeight) { target.style.height = chei + "px"; }
+							document.getElementById("fit_exp").style.display="none";
+							document.getElementById("fit_comp").style.display="block";
+						} else if (f == 1) { //もどす
+						target.style.width = <% echo(w) %> + "px";
+						target.style.height = <% echo(h) %> + "px";
+						document.getElementById("fit_exp").style.display="block";
+						document.getElementById("fit_comp").style.display="none";
+						}
+					//ツールの縦の位置をキャンバス中央に修正
+					d.getElementById("toolsWrapper").style.top = (target.clientHeight - d.getElementById("toolsWrapper").clientHeight)/2 + "px";
+					} //NEO
 				}
-			return("");
-		}
-		function SetCookie(key, val){
-			document.cookie = key + "=" + encodeURIComponent(val) + ";max-age=31536000;";
-		}
-	</script>
-
-</head>
-	
+		</script>
+		<% /def %>
+	</head>
 	<body id="paintmode">
 		<% def(chickenpaint)%>
 		<% elsedef %>
@@ -176,7 +217,7 @@
 			<p>JavaScript isn't working</p>
 		</noscript>
 		<article id="appstage">
-			<div class="app">
+			<div class="app" id="apps">
 				<% def(paintbbs) %>
 				<% def(useneo) %>
 				<applet-dummy code="pbbs.PaintBBS.class" archive="./PaintBBS.jar" name="paintbbs" width="<% echo(w) %>" height="<% echo(h) %>" mayscript>
@@ -237,8 +278,16 @@
 				</applet>
 				<% /def %>
 				</div>
-			<div class="palette">
+			<div class="palette" id="dyntools">
 				<form name="Palette">
+					<fieldset id="fit_exp">
+						<legend>FIT!</legend>
+						<input class="button" type="button" value="← FIT →" onclick="appfit(0)">
+					</fieldset>
+					<fieldset id="fit_comp" style="display: none;">
+						<legend>FIT!</legend>
+						<input class="button" type="button" value="→ FIT ←" onclick="appfit(1)">
+					</fieldset>
 					<% def(useneo) %>
 					<fieldset>
 						<legend>TOOL</legend>
@@ -613,7 +662,8 @@
 				<% /def %>
 				<p>
 					UseFunction -
-					DynamicPalette, <!-- http://wondercatstudio.com/ -->
+					<!-- http://wondercatstudio.com/ -->DynamicPalette,
+					<a href="https://huruihone.tumblr.com/" target="_top" rel="noopener noreferrer" title="by Soto">AppletFit</a>,
 					<a href="http://skinny.sx68.net/" target="_top" title="Skinny.php (by Kuasuki)">Skinny.php</a>
 				</p>
 			</article>
