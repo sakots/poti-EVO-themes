@@ -8,60 +8,25 @@
 	<link rel="stylesheet" href="<% echo(skindir) %>css/mono_dark.min.css" id="css2" disabled>
 	<link rel="stylesheet" href="<% echo(skindir) %>css/mono_deep.min.css" id="css3" disabled>
 	<link rel="stylesheet" href="<% echo(skindir) %>css/mono_mayo.min.css" id="css4" disabled>
-<script>
-	var colorIdx = GetCookie("colorIdx");
-		switch (Number(colorIdx)) {
-		case 1:
-			document.getElementById("css1").removeAttribute("disabled");
-			break;
-		case 2:
-			document.getElementById("css2").removeAttribute("disabled");
-			break;
-		case 3:
-			document.getElementById("css3").removeAttribute("disabled");
-			break;
-		case 4:
-			document.getElementById("css4").removeAttribute("disabled");
-			break;
-	} 
-	function SetCss(obj){
-		var idx = obj.selectedIndex;
-		SetCookie("colorIdx",idx);
-		window.location.reload();
-	}
-	function GetCookie(key){
-		var tmp = document.cookie + ";";
-		var tmp1 = tmp.indexOf(key, 0);
-		if(tmp1 != -1){
-			tmp = tmp.substring(tmp1, tmp.length);
-			var start = tmp.indexOf("=", 0) + 1;
-			var end = tmp.indexOf(";", start);
-			return(decodeURIComponent(tmp.substring(start,end)));
+	<script src="<% echo(skindir) %>changecss.js"></script>
+	<% def(imgsearch) %>
+		<% else %>
+		<style>
+			.article{
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				padding: 3px 0;
+				border-bottom: 1px dashed #8a8a8a;
+				line-height: 3em;
 			}
-		return("");
-	}
-	function SetCookie(key, val){
-		document.cookie = key + "=" + encodeURIComponent(val) + ";max-age=31536000;";
-	}
-</script>
-<% def(imgsearch) %>
-	<% else %>
-	<style>
-		.article{
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			padding: 3px 0;
-			border-bottom: 1px dashed #8a8a8a;
-			line-height: 3em;
-		}
-		img {
-			max-width: 300px;
-			margin: 12px 0 0;
-		}
-		</style>
-	<% /def %>
-<title><% echo(title) %><% echo(pageno) %></title>
+			img {
+				max-width: 300px;
+				margin: 12px 0 0;
+			}
+			</style>
+		<% /def %>
+	<title><% echo(title) %><% echo(pageno) %></title>
 </head>
 <body>
 <div id="main">
