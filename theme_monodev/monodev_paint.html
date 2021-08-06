@@ -22,20 +22,8 @@
 		<% /def %>
 		<!-- Javaが使えるかどうか判定 使えなければcheerpJをロード -->
 		<% def(chickenpaint)%>
-		<style>
-			:not(input),div#chickenpaint-parent :not(input){
-				-moz-user-select: none;
-				-webkit-user-select: none;
-				-ms-user-select: none;
-				user-select: none;
-			}
-		</style>
-		<script>
-			function load() {
-			document.addEventListener("dblclick", function(e){ e.preventDefault()}, { passive: false });
-			}
-			window.onload = load;
-		</script>
+		<link rel="stylesheet" href="<% echo(skindir) %>fix_chiken/fix.css" type="text/css">
+		<script href="<% echo(skindir) %>fix_chiken/fix.js"></script>
 		<script src="chickenpaint/js/chickenpaint.min.js<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>"></script>
 		<link rel="stylesheet" type="text/css" href="chickenpaint/css/chickenpaint.css<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>">
 		<% elsedef %>
