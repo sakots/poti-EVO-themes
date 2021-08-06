@@ -7,7 +7,7 @@
 */
 
 //テーマ(テンプレート)のバージョン
-define('TEMPLATE_VER', "v2.6.0 lot.210804.0");
+define('TEMPLATE_VER', "v2.7.0 lot.210806.0");
 
 //一般的なメッセージ
 

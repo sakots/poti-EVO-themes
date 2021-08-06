@@ -1,4 +1,4 @@
-/* Check for native pointer event support before PEP adds its polyfill */
-if (window.PointerEvent) {
-    window.hasNativePointerEvents = true;
+function load() {
+    document.addEventListener("dblclick", function(e){ e.preventDefault()}, { passive: false });
 }
+window.onload = load;
