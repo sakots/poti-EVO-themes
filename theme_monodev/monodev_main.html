@@ -22,7 +22,7 @@
 		<meta property="og:type" content="article">
 		<meta property="og:description" content="">
 		<meta property="og:image" content="<% echo(rooturl) %><% echo(skindir) %>img/og.png">
-		<meta property="og:image:width" content="1028"> 
+		<meta property="og:image:width" content="1028">
 		<meta property="og:image:height" content="1028">
 		<meta property="og:url" content="<% echo(rooturl) %>">
 		<% /def %>
@@ -98,8 +98,6 @@
 							<% def(app_to_use) %>
 							<input type="hidden" name="shi" value="<% echo(app_to_use) %>">
 							<% /def %>
-		
-
 							<% def(use_select_palettes) %>
 							パレット：<select name="selected_palette_no" title="パレット" class="form"><% echo(palette_select_tags) %></select>
 							<% /def %>
@@ -229,7 +227,7 @@
 								<h4>
 									<span class="oyaresno">[<% echo(oya/res/no) %>]</span>
 									<span class="rsub"><% echo(oya/res/sub) %></span> :
-									<span class="name"><a href="search.php?page=1&amp;imgsearch=on&amp;query=<% echo (oya/res/encoded_name) %>&amp;radio=2" target="_blank" rel="noopener"><% echo (oya/res/name) %></a></span><span class="trip"><% echo(oya/res/trip) %></span> : <% echo(oya/res/now) %><% def(oya/res/id) %> ID : <% echo(oya/res/id) %><% /def %><% def(oya/res/url) %> <span class="url">[<a href="<% echo(oya/res/url) %>" target="_blank" rel="nofollow noopener noreferrer">URL</a>]</span><% /def %><% def(oya/res/email) %><a href="mailto:<% echo(oya/res/email) %>">[mail]</a><% /def %> 
+									<span class="name"><a href="search.php?page=1&amp;imgsearch=on&amp;query=<% echo (oya/res/encoded_name) %>&amp;radio=2" target="_blank" rel="noopener"><% echo (oya/res/name) %></a></span><span class="trip"><% echo(oya/res/trip) %></span> : <% echo(oya/res/now) %><% def(oya/res/id) %> ID : <% echo(oya/res/id) %><% /def %><% def(oya/res/url) %> <span class="url">[<a href="<% echo(oya/res/url) %>" target="_blank" rel="nofollow noopener noreferrer">URL</a>]</span><% /def %><% def(oya/res/email) %><a href="mailto:<% echo(oya/res/email) %>">[mail]</a><% /def %>
 									<% def(oya/res/updatemark) %> <% echo(oya/res/updatemark) %><% /def %>
 								</h4>
 								<% def(oya/res/src) %>
@@ -317,7 +315,7 @@
 						</select>
 						<label>[<input type="checkbox" name="onlyimgdel" value="on">ImageOnly]</label>
 						<input class="button" type="submit" value=" OK ">
-						<span class="stylechanger">Color: 
+						<span class="stylechanger">Color:
 							<select class="form" id="mystyle" onchange="SetCss(this);">
 								<option>DEV</option>
 								<option>MONO</option>
@@ -363,14 +361,17 @@
 		</footer>
 		<script src="<% echo(skindir) %>jquery-3.5.1.min.js"></script>
 		<script>
-			$(function(){//2度押し対策
-				$('[type="submit"]').click(function(){
+			window.onpageshow = function(){
+				var $btn = $('[type="submit"]');
+				//disbledを解除
+				$btn.prop('disabled', false);
+				$btn.click(function(){//送信ボタン2度押し対策
 					$(this).prop('disabled',true);
 					$(this).closest('form').submit();
 				});
-			});
+			}
 			colorIdx=GetCookie('colorIdx');
-			document.getElementById("mystyle").selectedIndex=colorIdx;
+			document.getElementById("mystyle").selectedIndex = colorIdx;
 		</script>
 	</body>
 </html>

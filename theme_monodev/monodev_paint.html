@@ -131,13 +131,13 @@
 				uiElem: document.getElementById("chickenpaint-parent"),
 				canvasWidth: <% echo(picw) %>,
 				canvasHeight: <% echo(pich) %>,
-		
+
 				<% def(imgfile) %>loadImageUrl: "<% echo(imgfile) %>",<% /def %>
 				<% def(img_chi) %>loadChibiFileUrl: "<% echo(img_chi) %>",<% /def %>
 				saveUrl: "save.php?usercode=<% echo(usercode) %>",
 				postUrl: "?mode=<% echo(mode) %>&stime=<% echo(stime) %>",
 				exitUrl: "?mode=<% echo(mode) %>&stime=<% echo(stime) %>",
-		
+
 				allowDownload: true,
 				resourcesRoot: "chickenpaint/",
 				disableBootstrapAPI: true,
