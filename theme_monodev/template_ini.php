@@ -2,12 +2,12 @@
 /*
   * Template - MONODEV by sakots  >> https://dev.oekakibbs.net/
   *
-  * potiboard.php(v3.05.0～)のテーマ(テンプレート)設定ファイルです。
+  * potiboard.php(v3.15.0～)のテーマ(テンプレート)設定ファイルです。
   *
 */
 
 //テーマ(テンプレート)のバージョン
-define('TEMPLATE_VER', "v2.8.3 lot.211106.0");
+define('TEMPLATE_VER', "v2.9.0 lot.211204.0");
 
 //一般的なメッセージ
 
