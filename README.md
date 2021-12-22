@@ -45,7 +45,12 @@
 
 ## 更新履歴
 
-### [2021/11/06] MONO_DEV v2.9.0
+### [2021/12/22] MONO_DEV v2.9.1
+
+- 「続きを描く」画面での軽微なエラーを修正
+  - 詳しくは[こちら](https://github.com/sakots/poti-EVO-themes/issues/16)
+
+### [2021/12/06] MONO_DEV v2.9.0
 
 - windows inkや、Apple Pencil使用時の
   - ChickenPaintのパレットを長押しした時にコンテキストメニュー(名前を付けて保存ほか)が開く問題に対応
