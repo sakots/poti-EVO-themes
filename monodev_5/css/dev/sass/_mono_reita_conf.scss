@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+//スタイル設定ファイル
+
+//色指定とか
+$ushiro: #224;		//一番後ろ
+$haikei: #122;		//スレ背景
+$moji: #EEE;			//文字
+$link: #44F;			//リンクの文字
+$link_visited: #999;	//訪問済みリンク
+$link_active: #C00;	//アクティブなリンク
+$link_hover: #C00;	//マウスカーソルが上に載ってる時のリンク
+$resmoji: #C8C;			//レスの文字
+$border: #922;          //ボーダーとスレタイトルの左
+$b_border: #446;        //ボタンのボーダー
+$b_border_u: #224;       //ボタンのボーダーその2
+$button: #335;			//返信とかのボタン
+$button_moji: #FFF;		//ボタンの文字色
+$form_txt: #000;		//テキスト入力欄の文字色
+$form_txt_bk: #EEE;	//テキスト入力欄の背景色
+$th_bg: #012;        //スレタイトルの背景と削除画面のテーブルの奇数行
+$th_title: #DFE;		//スレタイトルの文字色
+
+$limit: #543;           //もうすぐ消える&省略の背景色
+
+$h2_hover: #252525;//スレタイトルの背景のhover
+$name_hover:#222;//名前の背景のhover
+
+//NEO色指定
+$bk: #233;				//アプレット背景
+$bk2: #555;				//アプレット背景の網状のあれ
+$tool_icon: #445;		//「窓」とか
+$icon: #333;			//
+$iconselect: #332;		//選択してるアイコン
+$text: #EEF;			//文字
+$bar: #556;				//バー
+$tool_button: #878;		//ツールボタン「鉛筆」とか
+$tool_button2: #545;	//選択中ツールボタン
+$tool_text: #FFF;		//ツールボタンの文字
+$tool_bar: #89A;		//ツールバーの色
+$tool_frame: #765;		//フレームの色
+//--------
+
+$cat_img_size: 150px;	//カタログモードのイメージサイズ
+
+// search 色指定
+$search_body_color: #FFF;
+$search_body_background-color: #222;
+$search_title_color: #FFF;
+$search_title_background-color: #333;
+$search_title_border-left: #605f7c;
+$search_a_color: #CCC;
+$search_input_text_color: #FFF;
+$search_input_text_border-color: #69C;
+$search_input_text_background-color: #333;
+$search_input_submit_color: #222;
+$search_input_submit_border-color: #6f859a;
+$search_input_submit_background-color: #868596;
+$search_name_color: #FFF;
+$search_name_border-color: #336;
+$search_name_a_color: #FFF;
+$search_name_hover: #669;
+$search_res_button_hover: #778daf;
+$search_input_text_hover: #222229;
+$search_label_color: #bbb;
+$search_label_border-color: #66C;
+$search_checked_radio_background-color: #DDF;
+$search_label_hover_background-color: #DDF;
+$label_hover_color: #333;
