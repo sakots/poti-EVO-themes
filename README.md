@@ -12,21 +12,25 @@
 - 複数パレット対応。
 - cssで色の切り替えが可能。
 
-## テーマ変更の仕方
+## MONO DEV 5
+
+MONO_DEVをPOTI5に対応させたようなものです。
+
+## テーマ変更の仕方（POTI5の場合）
 
 - まず、potiboardがきちんと動いていることを確認します。念のため`config.php`のバックアップを取っておいてください。
 
 1. [releases](https://github.com/sakots/poti-EVO-themes/releases)のページから、ダウンロードします。
-2. 解凍したあと、フォルダごと`potiboard.php`と同じところにコピーします。
-3. `config.php`で`SKIN_DIR`の値を変更します。MONO_DEVの場合は、theme_monodev/です。
+2. 解凍したあと、フォルダごと`templates`フォルダ内にコピーします。
+3. `config.php`で`SKIN_DIR`の値を変更します。MONO DEV 5の場合は、monodev_5/です。
 
    ``` php:config.php
-   define('SKIN_DIR', 'theme_monodev/');
+   define('SKIN_DIR', 'monodev_5/');
 
-   //define('SKIN_DIR', 'pink/');
+   //define('SKIN_DIR', 'basic/');
    ```
 
-4. `config.php`と`theme_monodev`フォルダをアップロードします。
+4. `config.php`と`monodev_5`フォルダをアップロードします。
 5. 管理画面から「更新」で、OK！
 
 ## ライセンスについて
@@ -44,6 +48,10 @@
 ---
 
 ## 更新履歴
+
+### [2022/03/30] MONO_DEV v5.0.0
+
+- 作成
 
 ### [2021/12/22] MONO_DEV v2.9.1
 
